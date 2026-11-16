@@ -1,0 +1,56 @@
+{
+ "train_reviews": 123418,
+ "test_reviews": 69126,
+ "test_issue_rate": 0.270751960188641,
+ "test_small_rate": 0.14543008419408038,
+ "test_large_rate": 0.12532187599456066,
+ "test_items_seen_in_train": 0.6418858316697046,
+ "auc_issue": {
+  "model": 0.6597233095753102,
+  "item_rate_only": 0.6153539035052557
+ },
+ "auc_too_small": {
+  "model": 0.747397752856486,
+  "item_rate_only": 0.6902587262404724
+ },
+ "auc_too_large": {
+  "model": 0.7464309994623065,
+  "item_rate_only": 0.6932103501005571
+ },
+ "issues_in_riskiest_10pct": 0.20250053430220133,
+ "issue_rate_in_riskiest_10pct": 0.5483217592592593,
+ "issues_in_riskiest_20pct": 0.33650352639452874,
+ "issue_rate_in_riskiest_20pct": 0.4555515370705244,
+ "issues_in_riskiest_30pct": 0.4508441974780936,
+ "issue_rate_in_riskiest_30pct": 0.4069055311761586,
+ "advice": {
+  "margin": 0.1,
+  "size_up_shown": 0.2169950525128027,
+  "size_down_shown": 0.25038335792610594,
+  "too_small_rate_when_size_up_shown": 0.3278,
+  "too_large_rate_when_size_down_shown": 0.2625375548879131,
+  "share_of_too_small_covered": 0.4891077290361086,
+  "share_of_too_large_covered": 0.5245296086805956,
+  "wrong_direction_rate_size_up": 0.029866666666666666,
+  "wrong_direction_rate_size_down": 0.0562745551190201
+ },
+ "size_blind_label": {
+  "too_small_rate_when_size_up_shown": 0.3599245534228337,
+  "too_large_rate_when_size_down_shown": 0.2966175195143105,
+  "wrong_direction_rate_size_up": 0.020525907023188728,
+  "wrong_direction_rate_size_down": 0.037438566059554784,
+  "size_up_shown": 0.13038509388652605,
+  "size_down_shown": 0.10007811821890461,
+  "share_of_too_small_covered": 0.32268974435491893,
+  "share_of_too_large_covered": 0.23686944476509292
+ },
+ "model_at_same_coverage": {
+  "too_small_rate_when_size_up_shown": 0.4100743370686786,
+  "too_large_rate_when_size_down_shown": 0.3675917895345476,
+  "share_of_too_small_covered": 0.3676514473291555,
+  "share_of_too_large_covered": 0.2935472699988457,
+  "wrong_direction_rate_size_up": 0.02385443248640852,
+  "wrong_direction_rate_size_down": 0.03396935530500145,
+  "advice_on_items_with_no_history": 0.08794174879166405
+ }
+}

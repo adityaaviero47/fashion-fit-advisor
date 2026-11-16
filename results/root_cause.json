@@ -1,0 +1,229 @@
+{
+ "reviews": 192544,
+ "customers": 105571,
+ "items": 5850,
+ "date_range": [
+  "2010-11-03",
+  "2018-01-08"
+ ],
+ "fit_issue_rate": 0.26220500249293666,
+ "too_small_rate": 0.13388628053847432,
+ "too_large_rate": 0.12831872195446237,
+ "mean_rating": {
+  "fit": 9.31,
+  "large": 8.55,
+  "small": 8.42
+ },
+ "share_rated_10": {
+  "fit": 0.709,
+  "large": 0.489,
+  "small": 0.454
+ },
+ "share_rated_6_or_less": {
+  "fit": 0.044,
+  "large": 0.155,
+  "small": 0.172
+ },
+ "by_category": [
+  {
+   "category": "shift",
+   "n": 5365,
+   "issue": 0.316,
+   "small": 0.15,
+   "large": 0.166
+  },
+  {
+   "category": "skirt",
+   "n": 1531,
+   "issue": 0.314,
+   "small": 0.174,
+   "large": 0.14
+  },
+  {
+   "category": "jacket",
+   "n": 2404,
+   "issue": 0.301,
+   "small": 0.151,
+   "large": 0.15
+  },
+  {
+   "category": "sweater",
+   "n": 1149,
+   "issue": 0.288,
+   "small": 0.096,
+   "large": 0.192
+  },
+  {
+   "category": "dress",
+   "n": 92884,
+   "issue": 0.283,
+   "small": 0.147,
+   "large": 0.136
+  },
+  {
+   "category": "top",
+   "n": 4931,
+   "issue": 0.268,
+   "small": 0.106,
+   "large": 0.163
+  },
+  {
+   "category": "romper",
+   "n": 3070,
+   "issue": 0.268,
+   "small": 0.112,
+   "large": 0.156
+  },
+  {
+   "category": "mini",
+   "n": 1751,
+   "issue": 0.258,
+   "small": 0.183,
+   "large": 0.075
+  },
+  {
+   "category": "jumpsuit",
+   "n": 5184,
+   "issue": 0.254,
+   "small": 0.13,
+   "large": 0.125
+  },
+  {
+   "category": "sheath",
+   "n": 19316,
+   "issue": 0.247,
+   "small": 0.162,
+   "large": 0.085
+  },
+  {
+   "category": "maxi",
+   "n": 3443,
+   "issue": 0.243,
+   "small": 0.083,
+   "large": 0.16
+  },
+  {
+   "category": "gown",
+   "n": 44381,
+   "issue": 0.207,
+   "small": 0.107,
+   "large": 0.101
+  }
+ ],
+ "by_size_band": [
+  {
+   "band": "0-4",
+   "n": 45247,
+   "issue": 0.257,
+   "small": 0.078,
+   "large": 0.179
+  },
+  {
+   "band": "5-8",
+   "n": 43225,
+   "issue": 0.245,
+   "small": 0.11,
+   "large": 0.135
+  },
+  {
+   "band": "9-12",
+   "n": 27793,
+   "issue": 0.259,
+   "small": 0.157,
+   "large": 0.101
+  },
+  {
+   "band": "13-16",
+   "n": 32515,
+   "issue": 0.269,
+   "small": 0.166,
+   "large": 0.102
+  },
+  {
+   "band": "17-20",
+   "n": 20733,
+   "issue": 0.288,
+   "small": 0.183,
+   "large": 0.105
+  },
+  {
+   "band": "21+",
+   "n": 23031,
+   "issue": 0.276,
+   "small": 0.17,
+   "large": 0.106
+  }
+ ],
+ "by_body_type": [
+  {
+   "body_type": "apple",
+   "n": 4877,
+   "issue": 0.285
+  },
+  {
+   "body_type": "full bust",
+   "n": 15006,
+   "issue": 0.282
+  },
+  {
+   "body_type": "pear",
+   "n": 22135,
+   "issue": 0.271
+  },
+  {
+   "body_type": "hourglass",
+   "n": 55349,
+   "issue": 0.262
+  },
+  {
+   "body_type": "petite",
+   "n": 22131,
+   "issue": 0.257
+  },
+  {
+   "body_type": "athletic",
+   "n": 43667,
+   "issue": 0.257
+  },
+  {
+   "body_type": "straight & narrow",
+   "n": 14742,
+   "issue": 0.254
+  }
+ ],
+ "share_of_issues_from_top_10pct_items": 0.5467258249811829,
+ "share_of_reviews_on_top_10pct_items": 0.5369006564733256,
+ "items_30plus_reviews": 1594,
+ "items_running_small_share": 0.2553324968632371,
+ "items_running_large_share": 0.2013801756587202,
+ "repeat_reviews": 86973,
+ "issue_rate_after_issue": 0.317125718148023,
+ "issue_rate_after_good_fit": 0.26065938926715215,
+ "fit_words_in_reviews": {
+  "small": {
+   "tight": 0.328,
+   "snug": 0.106,
+   "small": 0.393,
+   "size up": 0.169,
+   "sized up": 0.031,
+   "too short": 0.041,
+   "couldn't zip": 0.006,
+   "could not zip": 0.003,
+   "squeeze": 0.01
+  },
+  "large": {
+   "loose": 0.102,
+   "big": 0.281,
+   "large": 0.334,
+   "size down": 0.1,
+   "sized down": 0.023,
+   "too long": 0.039,
+   "baggy": 0.03,
+   "gaping": 0.003
+  }
+ },
+ "issue_reviews_mentioning_fit_words": {
+  "small": 0.75,
+  "large": 0.682
+ }
+}
