@@ -108,5 +108,7 @@ Base rates in the test period: 14.5% too small, 12.5% too large.
 - Tag fit problems from review **text** for orders with no explicit fit flag (about 70%
   of complaints say it in words). Built: a TF-IDF baseline (macro-F1 0.68 on 69K later
   reviews) and a Gemini tagger that also names the body area (`src/llm_tagger.py`).
+  With zero training data Gemini reached 78.7% accuracy on 300 later reviews vs 73.0%
+  for the trained baseline, and the bust was the most-named problem area.
   Next: run it on return comments, and route "bust" or "length" issues to the catalogue team.
 - Feed return reasons, not just reviews, into the model.
