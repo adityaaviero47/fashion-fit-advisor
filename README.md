@@ -52,6 +52,23 @@ its advice), which a label built from an item's own reviews can't.
 The riskiest 20% of orders by the model hold **34%** of all fit problems (45.6% of
 them misfit vs 27.1% overall).
 
+## Tagging fit from review text (classic NLP and GenAI)
+
+Most marketplaces collect free-text reviews and return comments, not a
+"too small / fit / too large" field. So the question is: can the text alone tell
+us the fit, and *why*?
+
+- **Baseline** ([`src/text_tagger.py`](src/text_tagger.py)): TF-IDF + logistic
+  regression trained on pre-2017 reviews. On all 69,126 later reviews: macro-F1
+  **0.68**. On a balanced sample of 300 (100 per class): **73%** accuracy, macro-F1 0.73.
+- **GenAI** ([`src/llm_tagger.py`](src/llm_tagger.py)): Gemini reads the same 300
+  reviews (20 per call) and returns the fit **and the body area behind it** (bust,
+  waist, hips, length, shoulders, arms). It is scored against each customer's own
+  label, which it never sees. Results: [`results/llm_tagger.json`](results/llm_tagger.json).
+
+The body area is what a catalogue team needs: "runs small" says *that* a size
+chart is wrong, while "too tight in the bust" says *where*.
+
 ## A/B test design
 
 - 50/50 split by customer.
@@ -68,7 +85,7 @@ them misfit vs 27.1% overall).
   return is about fit.
 - Offline results only. Whether shoppers follow the advice, and whether it lowers
   returns, needs the A/B test.
-- The review-text tagging in "Next steps" is not built yet.
+- The GenAI tagger is scored on 300 reviews: enough to compare with the baseline, not a production estimate.
 
 ## Run it
 
@@ -80,6 +97,8 @@ python root_cause.py              # findings      -> results/root_cause.json
 python advisor.py                 # model + test  -> results/advisor.json, widget_examples.json
 python experiment.py              # A/B sizing    -> results/experiment.json
 python build_prototype.py         # prototype/index.html (open in any browser)
+python text_tagger.py             # text baseline -> results/text_tagger.json, llm_eval_sample.csv
+GEMINI_API_KEY=... python llm_tagger.py   # GenAI tagger -> results/llm_tagger.json
 ```
 
 ## Data

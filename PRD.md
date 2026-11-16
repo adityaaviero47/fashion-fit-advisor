@@ -106,5 +106,7 @@ Base rates in the test period: 14.5% too small, 12.5% too large.
 ## 10. Next steps
 
 - Tag fit problems from review **text** for orders with no explicit fit flag (about 70%
-  of complaints say it in words). A GenAI/LLM classifier is the obvious tool; not built yet.
+  of complaints say it in words). Built: a TF-IDF baseline (macro-F1 0.68 on 69K later
+  reviews) and a Gemini tagger that also names the body area (`src/llm_tagger.py`).
+  Next: run it on return comments, and route "bust" or "length" issues to the catalogue team.
 - Feed return reasons, not just reviews, into the model.
