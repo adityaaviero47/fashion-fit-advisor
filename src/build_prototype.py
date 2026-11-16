@@ -8,6 +8,39 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 BANDS = ["0–4", "5–8", "9–12", "13–16", "17–20", "21+"]
+
+
+def dress_svg(body, trim, shape):
+    """Original, generic dress illustration (no real product photo is used)."""
+    skirts = {
+        "aline": "M120 210 L80 420 Q180 445 280 420 L240 210 Z",
+        "sheath": "M128 210 L118 420 Q180 432 242 420 L232 210 Z",
+        "wrap": "M122 210 L84 410 Q170 440 276 418 L238 210 Z",
+    }
+    extra = {
+        "aline": "",
+        "sheath": f'<path d="M150 210 L150 420" stroke="{trim}" stroke-width="3" opacity=".35"/>',
+        "wrap": f'<path d="M238 210 L140 330 L120 420" stroke="{trim}" stroke-width="4" fill="none" opacity=".45"/>',
+    }
+    return f"""<svg viewBox="0 0 360 460" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="dress illustration">
+ <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#efe9f7"/><stop offset="1" stop-color="#f9edf1"/></linearGradient>
+ <linearGradient id="fab" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="{body}"/><stop offset="1" stop-color="{trim}"/></linearGradient></defs>
+ <rect width="360" height="460" rx="8" fill="url(#bg)"/>
+ <path d="M180 40 Q186 58 180 70" stroke="#9aa0ad" stroke-width="3" fill="none"/>
+ <path d="M150 70 L210 70 L230 90 L240 210 L120 210 L130 90 Z" fill="url(#fab)"/>
+ <path d="M150 70 Q180 104 210 70" fill="none" stroke="#ffffff" stroke-width="3" opacity=".7"/>
+ <path d="{skirts[shape]}" fill="url(#fab)"/>
+ <rect x="120" y="200" width="120" height="14" rx="4" fill="{trim}" opacity=".9"/>
+ {extra[shape]}
+ <ellipse cx="180" cy="438" rx="110" ry="8" fill="#000" opacity=".06"/>
+</svg>"""
+
+
+ILLUSTRATIONS = {
+    "174086": dress_svg("#3d5a99", "#253b6e", "aline"),     # navy A-line
+    "136110": dress_svg("#9b2f4a", "#6d1f33", "sheath"),    # burgundy sheath
+    "126335": dress_svg("#2f8f6f", "#1f6650", "wrap"),      # emerald wrap
+}
 MARGIN = 0.10
 
 PAGE = """<!DOCTYPE html>
@@ -17,8 +50,8 @@ PAGE = """<!DOCTYPE html>
  body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:#f6f6f7;color:#282c3f}
  header{background:#fff;padding:14px 28px;border-bottom:1px solid #eaeaec;font-weight:700;letter-spacing:.5px}
  main{max-width:980px;margin:24px auto;display:flex;gap:28px;padding:0 16px}
- .img{flex:0 0 360px;height:460px;background:linear-gradient(160deg,#e9e3f5,#f7e8ee);border-radius:6px;
-      display:flex;align-items:center;justify-content:center;color:#7e818c;font-size:14px}
+ .img{flex:0 0 360px;height:460px;border-radius:6px;overflow:hidden}
+ .img svg{width:100%;height:100%;display:block}
  .info{flex:1}
  h1{font-size:22px;margin:0 0 4px} .sub{color:#7e818c;margin-bottom:18px}
  .sizes{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 18px}
@@ -31,7 +64,7 @@ PAGE = """<!DOCTYPE html>
 </style></head><body>
 <header>FASHION STORE · PROTOTYPE</header>
 <main>
- <div class="img">product image</div>
+ <div class="img" id="img"></div>
  <div class="info">
   <select id="item"></select>
   <h1 id="title"></h1><div class="sub" id="sub"></div>
@@ -39,7 +72,7 @@ PAGE = """<!DOCTYPE html>
   <div class="sizes" id="sizes"></div>
   <div class="fit" id="fit"><div class="ev">Pick a size to see how it fits people who wore that size.</div></div>
   <div class="note">Advice comes from a model trained on reviews before 2017. Evidence counts are real
-   past reviews of this item at that size.</div>
+   past reviews of this item at that size. Illustrations are generic drawings, not product photos.</div>
  </div>
 </main>
 <script>
@@ -49,6 +82,7 @@ const sel = document.getElementById("item");
 sel.innerHTML = ITEMS.map((it, i) => `<option value="${i}">Item ${it.item_id} (${it.category})</option>`).join("");
 function show(i) {
   const it = ITEMS[i];
+  document.getElementById("img").innerHTML = it.svg || "";
   document.getElementById("title").textContent = `Item ${it.item_id}`;
   document.getElementById("sub").textContent = `${it.category} · ${it.train_reviews.toLocaleString()} past reviews`;
   const box = document.getElementById("sizes");
@@ -76,7 +110,7 @@ show(0);
 
 def main(item_ids=("174086", "136110", "126335")):
     ex = {e["item_id"]: e for e in json.loads((ROOT / "results" / "widget_examples.json").read_text())}
-    items = [ex[i] for i in item_ids if i in ex]
+    items = [dict(ex[i], svg=ILLUSTRATIONS.get(i, "")) for i in item_ids if i in ex]
     html = (PAGE.replace("__DATA__", json.dumps(items))
                 .replace("__BANDS__", json.dumps(BANDS))
                 .replace("__MARGIN__", str(MARGIN)))
