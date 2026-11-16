@@ -66,6 +66,18 @@ us the fit, and *why*?
   waist, hips, length, shoulders, arms). It is scored against each customer's own
   label, which it never sees. Results: [`results/llm_tagger.json`](results/llm_tagger.json).
 
+| Same 300 later reviews (100 per class) | Accuracy | Macro-F1 |
+|---|---:|---:|
+| TF-IDF model trained on 123,418 labelled reviews | 73.0% | 0.73 |
+| **Gemini (`gemini-flash-lite-latest`), zero training data, prompt only** | **78.7%** | **0.79** |
+
+- Gemini beat a model trained on 123K labels without seeing one, which matters
+  because most marketplaces' reviews and return comments have no fit labels at all.
+- It confused "too small" with "too large" only 7 times in 300 (2.3%); most of its
+  errors were calling a misfit "fit".
+- It named a body area for 59% of the too-small reviews it tagged correctly and 40%
+  of the too-large ones. The bust was the most common (30 of 76 named areas).
+
 The body area is what a catalogue team needs: "runs small" says *that* a size
 chart is wrong, while "too tight in the bust" says *where*.
 
