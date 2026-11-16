@@ -1,0 +1,28 @@
+{
+ "model": "gemini-flash-lite-latest",
+ "n": 300,
+ "parsed": 300,
+ "llm": {
+  "accuracy": 0.7866666666666666,
+  "macro_f1": 0.7893643006583627,
+  "per_class": {
+   "small": {"precision": 0.897, "recall": 0.78, "f1-score": 0.834},
+   "fit": {"precision": 0.675, "recall": 0.83, "f1-score": 0.744},
+   "large": {"precision": 0.833, "recall": 0.75, "f1-score": 0.789}
+  },
+  "confusion_rows_true_cols_pred": [[78, 18, 4], [6, 83, 11], [3, 22, 75]]
+ },
+ "baseline_same_reviews": {
+  "accuracy": 0.73,
+  "macro_f1": 0.7328653041742047,
+  "per_class": {
+   "small": {"precision": 0.88, "recall": 0.66, "f1-score": 0.754},
+   "fit": {"precision": 0.612, "recall": 0.82, "f1-score": 0.701},
+   "large": {"precision": 0.78, "recall": 0.71, "f1-score": 0.743}
+  }
+ },
+ "area_of_correctly_tagged_problems": {
+  "small": {"overall": 32, "bust": 17, "waist": 9, "length": 8, "arms": 6, "hips": 6},
+  "large": {"overall": 45, "bust": 13, "waist": 5, "shoulders": 4, "length": 4, "arms": 3, "hips": 1}
+ }
+}
